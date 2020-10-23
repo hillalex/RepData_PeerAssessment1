@@ -16,10 +16,7 @@ knitr::knit_hooks$set(inline = function(x) {
     x
   }
 })
-```
 
-
-```r
 library(tidyverse)
 library(lubridate)
 options(dplyr.summarise.inform = FALSE)
@@ -66,7 +63,7 @@ total_per_day <- get_total_per_day(data_without_na)
 draw_hist(total_per_day)
 ```
 
-![](/home/alex/Documents/dev/RepData_PeerAssessment1/PA1_template_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](/home/alex/Documents/dev/RepData_PeerAssessment1/PA1_template_files/figure-html/mean-1.png)<!-- -->
 
 ```r
 mean <- mean(total_per_day$total)
@@ -78,7 +75,7 @@ The median number of steps taken in a day is 10765 (to the nearest whole number)
 
 ## What is the average daily activity pattern?
 
-To see the average daily pattern, we first group the data by interval and then
+To see the average daily pattern, we group the data by interval and then
 take the mean number of steps for each interval, across dates.
 
 
@@ -94,7 +91,7 @@ qplot(average_across_days$interval, average_across_days$mean,
       ylab = "Mean number of steps")
 ```
 
-![](/home/alex/Documents/dev/RepData_PeerAssessment1/PA1_template_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](/home/alex/Documents/dev/RepData_PeerAssessment1/PA1_template_files/figure-html/daily-1.png)<!-- -->
 
 ```r
 max <- average_across_days %>%
@@ -110,10 +107,10 @@ The interval with the maximum number of average steps is 835
 
 
 ```r
-is_na <- data %>%
+missing <- data %>%
   filter(is.na(steps))
 
-num_missing <- nrow(is_na)
+num_missing <- nrow(missing)
 ```
 
 There are 2304 missing rows in the data.
@@ -135,7 +132,7 @@ We can now visualise the total daily steps for our imputed data set, as before:
 draw_hist(total_per_day_imputed)
 ```
 
-![](/home/alex/Documents/dev/RepData_PeerAssessment1/PA1_template_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](/home/alex/Documents/dev/RepData_PeerAssessment1/PA1_template_files/figure-html/mean-imputed-1.png)<!-- -->
 
 ```r
 mean_imputed <- mean(total_per_day_imputed$total)
@@ -168,7 +165,7 @@ qplot(x = total,
   scale_color_manual(name = NULL, values = c(mean = "black"))
 ```
 
-![](/home/alex/Documents/dev/RepData_PeerAssessment1/PA1_template_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](/home/alex/Documents/dev/RepData_PeerAssessment1/PA1_template_files/figure-html/compare-1.png)<!-- -->
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
@@ -190,4 +187,4 @@ qplot(interval, mean,
       ylab = "Mean number of steps")
 ```
 
-![](/home/alex/Documents/dev/RepData_PeerAssessment1/PA1_template_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+![](/home/alex/Documents/dev/RepData_PeerAssessment1/PA1_template_files/figure-html/weekend-1.png)<!-- -->

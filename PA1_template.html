@@ -189,8 +189,9 @@ knitr::knit_hooks$set(inline = function(x) {
   else {
     x
   }
-})</code></pre>
-<pre class="r"><code>library(tidyverse)
+})
+
+library(tidyverse)
 library(lubridate)
 options(dplyr.summarise.inform = FALSE)
 options(lubridate.week.start = 1)
@@ -231,7 +232,7 @@ median &lt;- median(total_per_day$total)</code></pre>
 </div>
 <div id="what-is-the-average-daily-activity-pattern" class="section level2">
 <h2>What is the average daily activity pattern?</h2>
-<p>To see the average daily pattern, we first group the data by interval and then take the mean number of steps for each interval, across dates.</p>
+<p>To see the average daily pattern, we group the data by interval and then take the mean number of steps for each interval, across dates.</p>
 <pre class="r"><code>average_across_days &lt;- data_without_na %&gt;%
   group_by(interval) %&gt;%
   summarise(mean(steps)) %&gt;%
@@ -250,10 +251,10 @@ max_interval &lt;- max$interval</code></pre>
 </div>
 <div id="imputing-missing-values" class="section level2">
 <h2>Imputing missing values</h2>
-<pre class="r"><code>is_na &lt;- data %&gt;%
+<pre class="r"><code>missing &lt;- data %&gt;%
   filter(is.na(steps))
 
-num_missing &lt;- nrow(is_na)</code></pre>
+num_missing &lt;- nrow(missing)</code></pre>
 <p>There are 2304 missing rows in the data.</p>
 <p>For a simple imputation of missing values, we replace each missing number of steps with the mean number of steps for that interval.</p>
 <pre class="r"><code>imputed &lt;- data %&gt;%
