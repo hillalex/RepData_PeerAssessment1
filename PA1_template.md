@@ -63,7 +63,7 @@ total_per_day <- get_total_per_day(data_without_na)
 draw_hist(total_per_day)
 ```
 
-![](/home/alex/Documents/dev/RepData_PeerAssessment1/PA1_template_files/figure-html/mean-1.png)<!-- -->
+![](PA1_template_files/figure-html/mean-1.png)<!-- -->
 
 ```r
 mean <- mean(total_per_day$total)
@@ -91,7 +91,7 @@ qplot(average_across_days$interval, average_across_days$mean,
       ylab = "Mean number of steps")
 ```
 
-![](/home/alex/Documents/dev/RepData_PeerAssessment1/PA1_template_files/figure-html/daily-1.png)<!-- -->
+![](PA1_template_files/figure-html/daily-1.png)<!-- -->
 
 ```r
 max <- average_across_days %>%
@@ -132,7 +132,7 @@ We can now visualise the total daily steps for our imputed data set, as before:
 draw_hist(total_per_day_imputed)
 ```
 
-![](/home/alex/Documents/dev/RepData_PeerAssessment1/PA1_template_files/figure-html/mean-imputed-1.png)<!-- -->
+![](PA1_template_files/figure-html/mean-imputed-1.png)<!-- -->
 
 ```r
 mean_imputed <- mean(total_per_day_imputed$total)
@@ -165,7 +165,7 @@ qplot(x = total,
   scale_color_manual(name = NULL, values = c(mean = "black"))
 ```
 
-![](/home/alex/Documents/dev/RepData_PeerAssessment1/PA1_template_files/figure-html/compare-1.png)<!-- -->
+![](PA1_template_files/figure-html/compare-1.png)<!-- -->
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
@@ -187,4 +187,4 @@ qplot(interval, mean,
       ylab = "Mean number of steps")
 ```
 
-![](/home/alex/Documents/dev/RepData_PeerAssessment1/PA1_template_files/figure-html/weekend-1.png)<!-- -->
+![](PA1_template_files/figure-html/weekend-1.png)<!-- -->
