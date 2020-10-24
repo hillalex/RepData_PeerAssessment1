@@ -44,7 +44,7 @@ get_total_per_day <- function(data) {
 draw_hist <- function(data) {
   qplot(data$total,
         geom = "histogram",
-        binwidth = 895,
+        binwidth = 5000,
         xlab = "Total daily steps",
         ylab = "Frequency",
         fill = "salmon",
@@ -84,7 +84,8 @@ average_across_days <- data_without_na %>%
   summarise(mean(steps)) %>%
   rename(mean = `mean(steps)`)
 
-qplot(average_across_days$interval, average_across_days$mean,
+qplot(interval, mean,
+      data = average_across_days,
       geom = "line",
       xlab = "Interval",
       ylab = "Mean number of steps")
@@ -154,7 +155,7 @@ qplot(x = total,
       data = combined_data,
       facets = type ~ .,
       geom = "histogram",
-      binwidth = 895,
+      binwidth = 5000,
       xlab = "Total daily steps",
       ylab = "Frequency",
       fill = "salmon",
