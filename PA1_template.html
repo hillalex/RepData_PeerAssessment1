@@ -198,9 +198,9 @@ options(lubridate.week.start = 1)
 options(digits = 10)</code></pre>
 <div id="loading-and-preprocessing-the-data" class="section level2">
 <h2>Loading and preprocessing the data</h2>
-<p>The source data is included in this repo, in a zip file. To reproduce this analysis first inflate the data by running <code>./inflateData.sh</code>. This will result in the file <code>activity.csv</code> being created in the current directory.</p>
-<p>We first read the data into R, and create some helper functions.</p>
-<pre class="r"><code>data &lt;- read_csv(&quot;activity.csv&quot;)
+<p>The source data is included in this repo in a zip file. We first read the data into R, and create some helper functions.</p>
+<pre class="r"><code>unzip(&quot;activity.zip&quot;)
+data &lt;- read_csv(&quot;activity.csv&quot;)
 data_without_na &lt;- data %&gt;% filter(!is.na(steps))
 
 get_total_per_day &lt;- function(data) {
@@ -267,7 +267,7 @@ total_per_day_imputed &lt;- get_total_per_day(imputed)</code></pre>
 <pre class="r"><code>mean_imputed &lt;- mean(total_per_day_imputed$total)
 median_imputed &lt;- median(total_per_day_imputed$total)</code></pre>
 <p>After imputing missing values, the mean number of steps taken in a day is 10766 and the median number of steps taken in a day is 10766. Notice that the mean remains the same as in the original dataset with missing values, and the median has been pulled towards the mean.</p>
-<p>To see this more clearly, we can view the two datasets side by side and note that the distribution of frequencies is unchanged, with more weight simply added to the mean.</p>
+<p>To see this more clearly, we can view the two datasets side by side and note that the distribution of frequencies has had more weight added to the mean.</p>
 <pre class="r"><code>total_excluding_missing_vals &lt;- total_per_day %&gt;% mutate(type = &quot;excluding missing values&quot;)
 total_with_imputed_vals &lt;- total_per_day_imputed %&gt;% mutate(type = &quot;imputed missing value&quot;)
 

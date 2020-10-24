@@ -8,5 +8,4 @@ and the knitted HTML document at [PA1_template.html](PA1_template.html).
 
 To view the rendered HTML in your browser, check out https://htmlpreview.github.io/?https://github.com/hillalex/RepData_PeerAssessment1/blob/master/PA1_template.html
 
-To re-knit the `.Rmd` file, first inflate the data by running `./inflateData.sh` (or manually unzip 
-the file `activity.zip`), then run `rmarkdown::render("PA1_template.Rmd")`, or knit using the shortcut in your IDE.
+To re-knit the `.Rmd` file run `rmarkdown::render("PA1_template.Rmd")`, or knit using the shortcut in your IDE.

@@ -26,12 +26,11 @@ options(digits = 10)
 
 ## Loading and preprocessing the data
 
-The source data is included in this repo, in a zip file. To reproduce this analysis first inflate the data by running `./inflateData.sh`. This will result in the file `activity.csv` being created in the current directory.
-
-We first read the data into R, and create some helper functions.
+The source data is included in this repo in a zip file. We first read the data into R, and create some helper functions.
 
 
 ```r
+unzip("activity.zip")
 data <- read_csv("activity.csv")
 data_without_na <- data %>% filter(!is.na(steps))
 
@@ -142,7 +141,7 @@ median_imputed <- median(total_per_day_imputed$total)
 After imputing missing values, the mean number of steps taken in a day is 10766
 and the median number of steps taken in a day is 10766. Notice that the mean remains the same as in the original dataset with missing values, and the median has been pulled towards the mean.
 
-To see this more clearly, we can view the two datasets side by side and note that the distribution of frequencies is unchanged, with more weight simply added to the mean.
+To see this more clearly, we can view the two datasets side by side and note that the distribution of frequencies has had more weight added to the mean.
 
 
 ```r
